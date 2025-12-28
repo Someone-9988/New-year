@@ -6,12 +6,7 @@
   <title>Happy New Year My Love</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       min-height: 100vh;
       background:
@@ -30,230 +25,115 @@
       color: #5a2342;
       overflow: hidden;
     }
-
     .card {
-      background:transparent;
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
       border-radius: 32px;
       padding: 48px 38px;
       max-width: 460px;
       width: 92%;
       text-align: center;
-      box-shadow:
-        0 30px 70px rgba(139, 30, 63, 0.25),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 30px 70px rgba(139, 30, 63, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       position: relative;
       z-index: 1;
+      overflow: visible;
+      transition: opacity 0.8s ease;
     }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      margin-bottom: 14px;
-      color: #8b1e3f;
-      letter-spacing: 1px;
-    }
-
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 400;
-      margin-bottom: 26px;
-      color: #6d2b4f;
-      font-style: italic;
-    }
-
-    p {
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    .heart {
-      font-size: 2.2rem;
-      margin: 20px 0;
-      animation: pulse 1.5s infinite;
-      color: #e75480;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-      100% { transform: scale(1); }
-    }
-
-    .hover-container {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin: 24px 0;
-    }
-
-    .hover-box {
-      background: rgba(255, 255, 255, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 20px;
-      padding: 14px 18px;
-      height: 52px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.45s ease, box-shadow 0.6s ease, border 0.6s ease;
-      box-shadow: 0 10px 30px rgba(214, 107, 156, 0.25);
-    }
-
-    .hover-box span {
-      display: block;
-      font-size: 0.78rem;
-      opacity: 0.65;
-      margin-bottom: 6px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #7b2e53;
-    }
-
-    .hover-box p {
-      opacity: 0;
-      transform: translateY(14px);
-      transition: all 0.5s ease;
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: #4b1c34;
-    }
-
-    .hover-box:hover, .hover-box:focus-within, .hover-box:active {
-      height: 160px;
-      background: rgba(255, 255, 255, 0.45);
-      box-shadow:
-        0 0 0 1px rgba(139, 30, 63, 0.55),
-        0 0 22px rgba(139, 30, 63, 0.45),
-        0 0 44px rgba(139, 30, 63, 0.25);
-      border: 1px solid rgba(139, 30, 63, 0.7);
-    }
-
-    .hover-box:hover p, .hover-box:focus-within p, .hover-box:active p {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .soft-btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 22px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #ed3d7b, #f3a0c2);
-      color: white;
-      text-decoration: none;
-      font-size: 0.9rem;
-      box-shadow: 0 8px 18px rgba(247, 143, 179, 0.45);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .soft-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 26px rgba(247, 143, 179, 0.55);
-    }
-
-    .footer {
-      margin-top: 28px;
-      font-size: 0.75rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: rgba(90, 35, 66, 0.65);
-    }
-
-    .site-footer {
-      position: fixed;
-      bottom: 14px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.7rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: rgba(90, 35, 66, 0.55);
-      pointer-events: none;
-    }
-
-    .newyear-message {
+    .arrow {
       position: absolute;
+      right: -50px;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
+      transform: translateY(-50%);
+      font-size: 2rem;
       color: #b03060;
-      opacity: 0;
-      text-align: center;
-      pointer-events: none;
-      transition: opacity 1.2s ease;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
-
-    .petals span {
+    .arrow:hover { transform: translateY(-50%) scale(1.3); color: #e75480; }
+    .back-arrow {
       position: absolute;
-      top: -10px;
-      font-size: 16px;
-      color: rgba(255,182,193,0.6);
-      animation: fall 8s linear infinite;
-      pointer-events: none;
+      left: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #b03060;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
-
-    @keyframes fall {
-      0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
-      20% { opacity: 0.7; }
-      100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
-    }
-
-    @media (max-width: 480px) {
-      .card { padding: 40px 28px; }
-      h1 { font-size: 2.2rem; }
-      .hover-box { height: 56px; }
-      .newyear-message { font-size: 1.1rem; }
-    }
+    .back-arrow:hover { transform: translateY(-50%) scale(1.3); color: #e75480; }
+    .hidden { opacity: 0; pointer-events: none; position: absolute; top: 0; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; margin-bottom: 14px; color: #8b1e3f; letter-spacing: 1px; }
+    h2 { font-size: 1.25rem; font-weight: 400; margin-bottom: 26px; color: #6d2b4f; font-style: italic; }
+    p { font-size: 0.95rem; line-height: 1.7; }
+    .heart { font-size: 2.2rem; margin: 20px 0; animation: pulse 1.5s infinite; color: #e75480; }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    .hover-container { display: flex; flex-direction: column; gap: 14px; margin: 24px 0; }
+    .hover-box { background: rgba(255, 255, 255, 0.25); border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 20px; padding: 14px 18px; height: 52px; overflow: hidden; cursor: pointer; transition: all 0.45s ease, box-shadow 0.6s ease, border 0.6s ease; box-shadow: 0 10px 30px rgba(214, 107, 156, 0.25); }
+    .hover-box span { display: block; font-size: 0.78rem; opacity: 0.65; margin-bottom: 6px; letter-spacing: 1px; text-transform: uppercase; color: #7b2e53; }
+    .hover-box p { opacity: 0; transform: translateY(14px); transition: all 0.5s ease; font-family: 'Playfair Display', serif; font-size: 1rem; color: #4b1c34; }
+    .hover-box:hover, .hover-box:focus-within, .hover-box:active { height: 160px; background: rgba(255, 255, 255, 0.45); box-shadow: 0 0 0 1px rgba(139, 30, 63, 0.55), 0 0 22px rgba(139, 30, 63, 0.45), 0 0 44px rgba(139, 30, 63, 0.25); border: 1px solid rgba(139, 30, 63, 0.7); }
+    .hover-box:hover p, .hover-box:focus-within p, .hover-box:active p { opacity: 1; transform: translateY(0); }
+    .soft-btn { display: inline-block; margin-top: 10px; padding: 10px 22px; border-radius: 999px; background: linear-gradient(135deg, #f4246d, #f3a0c2); color: white; text-decoration: none; font-size: 0.9rem; box-shadow: 0 8px 18px rgba(247, 143, 179, 0.45); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .soft-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(247, 143, 179, 0.55); }
+    .footer { margin-top: 28px; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: rgba(90, 35, 66, 0.65); }
+    .site-footer { position: fixed; bottom: 14px; width: 100%; text-align: center; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: rgba(90, 35, 66, 0.55); pointer-events: none; }
+    .newyear-message { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #b03060; opacity: 0; text-align: center; pointer-events: none; transition: opacity 1.2s ease; }
+    .petals span { position: absolute; top: -10px; font-size: 16px; color: rgba(255,182,193,0.6); animation: fall 8s linear infinite; pointer-events: none; }
+    @keyframes fall { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0; } 20% { opacity: 0.7; } 100% { transform: translateY(120vh) rotate(360deg); opacity: 0; } }
+    @media (max-width: 480px) { .card { padding: 40px 28px; } h1 { font-size: 2.2rem; } .hover-box { height: 56px; } .newyear-message { font-size: 1.1rem; } }
   </style>
 </head>
 <body>
   <div class="particles"></div>
   <div class="petals"></div>
 
-  <div class="card">
+  <div class="card" id="card1">
     <h1>Happy New Year</h1>
     <h2>TO MY FUTURE WIFE ❤️</h2>
-
     <div class="hover-container">
-      <div class="hover-box" tabindex="0">
-        <span>For You 🤍 (click here)</span>
-        <p>As this new year begins, I just want you to know one thing  every dream, every smile, and every heartbeat of mine feels more meaningful because you are in my life.</p>
-      </div>
-      <div class="hover-box" tabindex="0">
-        <span>Always Yours 🤍 (click here)</span>
-        <p>May this year bring us more love, more laughter, and countless moments where time slows down and it’s just you and me.</p>
-      </div>
-      <div class="hover-box" tabindex="0">
-        <span>A Promise 🤍 (click here)</span>
-        <p>No matter how many years pass, I’ll always choose you  today, tomorrow, and every new year that follows.</p>
-      </div>
+      <div class="hover-box" tabindex="0"><span>For You 🤍 (click here)</span><p>As this new year begins, I just want you to know one thing  every dream, every smile, and every heartbeat of mine feels more meaningful because you are in my life.</p></div>
+      <div class="hover-box" tabindex="0"><span>Always Yours 🤍 (click here)</span><p>May this year bring us more love, more laughter, and countless moments where time slows down and it’s just you and me.</p></div>
+      <div class="hover-box" tabindex="0"><span>A Promise 🤍 (click here)</span><p>No matter how many years pass, I’ll always choose you  today, tomorrow, and every new year that follows.</p></div>
     </div>
-
     <div class="heart">💗</div>
-
     <a href="#" class="soft-btn" id="foreverBtn">Forever Yours</a>
-
-    <div class="footer">— With all my love —<br>
+    <div class="footer">— With all my love—<br>
     —For you Angelina karna—</div>
+    <div class="arrow" id="nextArrow">→</div>
+  </div>
+
+  <div class="card hidden" id="card2">
+    <h1>FOR YOU,</h1>
+    <h2>That First Time I Saw You</h2>
+    <p>I saw you for the first time at Kausaltar Palace, <br>
+      and honestly, that moment stayed with me.<br> 
+      I don’t know what it was, but after that day,<br> 
+      you kept popping into my head for no reason.<br> 
+      I’d catch myself smiling and thinking about you,<br> 
+      like “why am I even doing this?” <br> 
+      But I didn’t mind it at all. I just felt like telling you,<br> 
+      because some moments are small, but they feel special.</p>
+    <div class="heart">💖</div>
+    <div class="footer">— Forever Yours —</div>
+    <div class="back-arrow" id="backArrow">←</div>
   </div>
 
   <div class="newyear-message" id="nyMessage">Happy New Year, My Queen 👑</div>
-  <div class="site-footer"> Designed by Abhinav verma</div>
+  <div class="site-footer">Designed by Abhinav verma</div>
 
   <script>
     const btn = document.getElementById('foreverBtn');
     const message = document.getElementById('nyMessage');
     const petalsContainer = document.querySelector('.petals');
+    const arrow = document.getElementById('nextArrow');
+    const backArrow = document.getElementById('backArrow');
+    const card1 = document.getElementById('card1');
+    const card2 = document.getElementById('card2');
 
     btn.addEventListener('click', () => {
-      // Show message
       message.style.opacity = '1';
-
-      // Create petals
       for(let i=0;i<25;i++){
         const petal = document.createElement('span');
         petal.textContent = '🌸';
@@ -262,6 +142,16 @@
         petal.style.fontSize = (12 + Math.random()*12) + 'px';
         petalsContainer.appendChild(petal);
       }
+    });
+
+    arrow.addEventListener('click', () => {
+      card1.classList.add('hidden');
+      card2.classList.remove('hidden');
+    });
+
+    backArrow.addEventListener('click', () => {
+      card2.classList.add('hidden');
+      card1.classList.remove('hidden');
     });
   </script>
 </body>
